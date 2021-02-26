@@ -25,6 +25,7 @@ function dogsNearMe(breedName, postalCode){
     // URL will pass in breedName and postalCode passed when click event happens 
     // extract needed information from response, should be array containing 3 dogs 
     // picture, name, age, desc, link to adopt
+    $('#adopt-me-cards').text('');
     let dogURL = 'https://petproxy.herokuapp.com/animals?type=dog&distance=50&limit=3&location=' + postalCode + '&breed='+ breedName
     fetch(dogURL)
     .then(function(response){
@@ -33,7 +34,6 @@ function dogsNearMe(breedName, postalCode){
     .then(function(response){
         // loop through the array of ANIMALS in the response, should always return 3 animals due to query parameters in the URL 
         for(var i = 0; response.animals[i]; i++){
-            console.log('should be 3');
             let dogPhoto = response.animals[i].photos[i].large;
             let dogName = response.animals[i].name;
             let dogAge = response.animals[i].age;
