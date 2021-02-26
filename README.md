@@ -1,3 +1,3 @@
-# Event-Weather-Coordinator
+# Dog-Breed-Finder-and-Rescue
 ## Description
-An application that allows for searching for events and displays local weather/forecast data for selected event
+An application that allows you to search for random dog breeds and find matching dogs for rescue around you.
