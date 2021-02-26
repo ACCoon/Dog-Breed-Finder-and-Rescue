@@ -1,7 +1,7 @@
 $('#search-button').on('click', function(event){
     event.preventDefault();
     console.log('return dog pics');
-    var breedInput = $('#breed-input').val();
+    var breedInput = $('#breed-input').val().replace(/\s/g, '');
     var postalCodeInput = $('#postal-code-input').val();
     console.log(breedInput);
     console.log(postalCodeInput);
@@ -17,7 +17,16 @@ function getDogPics(breedName){
         return response.json();
     })
     .then(function(response){
-        console.log(response.message[0])
+        var randomDog = $('#random-dog-pic')
+        randomDog.empty();
+       for (var i = 0; i < 3; i++){
+            var element = `
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                <img src="${response.message[i]}" alt=""></div>
+            </div>`
+            randomDog.append(element)
+        }
     })
 }
 
