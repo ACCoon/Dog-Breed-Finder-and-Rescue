@@ -1,10 +1,13 @@
 $('#search-button').on('click', function(event){
     event.preventDefault();
     console.log('return dog pics');
-    var userInput = $('#user-input').val();
-    console.log(userInput);
-    getDogPics(userInput);
-})
+    var breedInput = $('#breed-input').val();
+    var postalCodeInput = $('#postal-code-input').val();
+    console.log(breedInput);
+    console.log(postalCodeInput);
+    getDogPics(breedInput);
+    dogsNearMe(breedInput, postalCodeInput);
+});
 
 // write getdogpics function
 
@@ -14,9 +17,11 @@ function getDogPics(breedName){
     // recieve pics from dog pic api
     // add pictures to new html elements to be displayed to page
 
-}
+};
 
-function dogsNearMe(breedName){
-    // fetch adoptable dogs with queried breed name
-    // allow users to enter postal code
-}
+function dogsNearMe(breedName, postalCode){
+    // fetch adoptable dogs with queried breed name and postal code 
+    // URL 
+    
+
+};
