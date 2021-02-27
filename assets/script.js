@@ -6,6 +6,9 @@ $('#search-button').on('click', function(event){
     console.log(postalCodeInput);
     getDogPics(breedInput);
     dogsNearMe(breedInput, postalCodeInput);
+    if(!searchedBreeds.includes(breedInput)){
+        saveToList(breedInput);
+    }
 });
 
 // write getdogpics function
@@ -30,7 +33,7 @@ function getDogPics(breedName){
 }
 
 
-
+// function fetches from rescue api, grabs info and prints a card to the page for adoptable dogs
 function dogsNearMe(breedName, postalCode){ 
     // fetch adoptable dogs with queried breed name and postal code 
     // URL specifies dog, distance of within 50 miles of user input postal code and user input dog breed 
@@ -83,4 +86,42 @@ function dogsNearMe(breedName, postalCode){
             
         }
     })
+};
+
+// clear history button, clears local storage and list html
+$('#clear-history').on('click', function(){
+    $('#search-history').html('');
+    localStorage.clear();
+});
+
+// stores each breed name searched as an array in localstorage
+var searchedBreeds = JSON.parse(localStorage.getItem('searchHistory')) || [];
+function saveToList(breedInput){
+    searchedBreeds.push(breedInput);
+    localStorage.setItem('searchHistory', JSON.stringify(searchedBreeds));
+    renderSearchHistory();
+};
+
+// prints the search inputs to a list under the search bar
+function renderSearchHistory(){
+    console.log(searchedBreeds);
+        $('#search-history').text('');
+    for(var i = 0; i < searchedBreeds.length; i++){
+        var dogBreedName = `<button class = "uk-button-secondary dog-button uk-button-large">${searchedBreeds[i]}</button>`;
+        $('#search-history').append(dogBreedName);
+    }
+};
+
+// persists the search on the page if user has used the app before
+function init(){
+    if(searchedBreeds !== null){
+        renderSearchHistory();
+    }
 }
+// initializes the rendersearchhistory if there is previous data in local storage 
+init();
+
+// makes the search history button give you random dog pictures according to the breed on that button
+$('#search-history').on('click', '.dog-button', function(){
+    getDogPics($(this).html());
+});
