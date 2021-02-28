@@ -30,7 +30,7 @@ function getDogPics(breedName){
             randomDog.append(element)
         }
     })
-}
+};
 
 
 // function fetches from rescue api, grabs info and prints a card to the page for adoptable dogs
@@ -48,8 +48,19 @@ function dogsNearMe(breedName, postalCode){
     })
     .then(function(response){
         // loop through the array of ANIMALS in the response, should always return 3 animals due to query parameters in the URL 
+        // conditional that shows user no dogs found if search isnt found
+        // console.log(response.error)
+        if (postalCode === ''){
+            $('#adopt-me-cards').text('Enter your postal code to find adoptable dogs near you')
+        } else if (response.error == 'url error'){
+            console.log('error')
+            $('#adopt-me-cards').text('Sorry! We couldnt fetch any adoptable dogs of that breed in your area!')
+        }
+
+        
+
         for(var i = 0; response.animals[i]; i++){
-            let dogPhoto = response.animals[i].photos[i].large;
+            let dogPhoto = response.animals[i].photos[i].full || 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
             let dogName = response.animals[i].name;
             let dogAge = response.animals[i].age;
             let dogDesc = response.animals[i].description;
@@ -60,7 +71,7 @@ function dogsNearMe(breedName, postalCode){
             console.log(dogPhoto);
             console.log(dogAge);
             console.log(adoptLink);
-            
+            console.log(response);
 
             let adoptDogCard = `<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
             <div class="uk-card-media-left uk-cover-container">
@@ -117,7 +128,7 @@ function init(){
     if(searchedBreeds !== null){
         renderSearchHistory();
     }
-}
+};
 // initializes the rendersearchhistory if there is previous data in local storage 
 init();
 
