@@ -1,0 +1,45 @@
+html {
+    background-color: #f4f5db;
+}
+
+body {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    height: 300px;
+    max-width: auto;
+}
+
+/* Styling for buttons */
+.dog-button {
+    background-color: #487e95;
+    margin: 4px;
+}
+
+#clear-history {
+    background-color: #487e95;
+    margin: 4px;
+}
+
+.dog-button:hover, .dog-button:focus, #clear-history:hover {
+    background-color: #23689b;
+}
+
+.uk-first-column {
+    padding-left: 0px;
+}
+
+/* Styling for cards */
+#random-dog-pic {
+    margin: 8px 0 16px 0;
+}
+
+#random-dog-pic > div > div, #adopt-me-cards > div {
+    background-color: #d9dab0;
+}
