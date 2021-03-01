@@ -57,10 +57,14 @@ function dogsNearMe(breedName, postalCode){
             $('#adopt-me-cards').text('Sorry! We couldnt fetch any adoptable dogs of that breed in your area!')
         }
 
-        
-
         for(var i = 0; response.animals[i]; i++){
-            let dogPhoto = response.animals[i].photos[i].full || 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
+            
+            if (response.animals.length){
+                var dogPhoto = response.animals[i].photos[0].full;               
+            } else {
+                var dogPhoto = 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
+            };
+
             let dogName = response.animals[i].name;
             let dogAge = response.animals[i].age;
             let dogDesc = response.animals[i].description;
