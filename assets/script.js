@@ -1,6 +1,6 @@
 $('#search-button').on('click', function(event){
     event.preventDefault();
-    var breedInput = $('#breed-input').val();
+    var breedInput = $('#breed-input').val().replace(/\s/g, '');
     var postalCodeInput = $('#postal-code-input').val();
     getDogPics(breedInput);
     dogsNearMe(breedInput, postalCodeInput);
