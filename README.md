@@ -14,7 +14,7 @@ Enjoy a way to look at your favorite dog breed while also searching for rescues 
 
 Deployed Website: 
 
-![Dog Breed Finder and Rescue](/Dog-Breed-Finder-and-Rescue/assets/images/site-screenshot.png)
+![Dog Breed Finder and Rescue](/assets/images/dogglesite.png)
 
 ## Requirements 
 ---
@@ -55,3 +55,5 @@ Any and all improvement suggestions are welcome!
 ## Credits
 ---
 Andrew Coon, Haleigh Spurlock, John Kim, Maryann Niderman 2021
+
+- thank you to sommer for designing the site logo :)
