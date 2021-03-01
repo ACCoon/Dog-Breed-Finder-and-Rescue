@@ -1,7 +1,7 @@
 $('#search-button').on('click', function(event){
     event.preventDefault();
-    var breedInput = $('#breed-input').val().replace(/\s/g, '');
-    var postalCodeInput = $('#postal-code-input').val();
+    var breedInput = $('#breed-input').val().toLowerCase().replace(/\s/g, '');
+    var postalCodeInput = $('#postal-code-input').val().trim();
     getDogPics(breedInput);
     dogsNearMe(breedInput, postalCodeInput);
     if(!searchedBreeds.includes(breedInput)){
@@ -60,7 +60,7 @@ function dogsNearMe(breedName, postalCode){
             if (response.animals[i].photos.length){
                 var dogPhoto = response.animals[i].photos[0].full;               
             } else {
-                var dogPhoto = 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
+                var dogPhoto = 'https://i3.cpcache.com/merchandise/110_550x550_Front_Color-White.jpg?Size=L&AttributeValue=NA&c=True&region={%22name%22:%22FrontCenter%22,%22width%22:8,%22height%22:8,%22alignment%22:%22MiddleCenter%22,%22orientation%22:0,%22dpi%22:100,%22crop_x%22:0,%22crop_y%22:0,%22crop_h%22:800,%22crop_w%22:800,%22scale%22:0,%22template%22:{%22id%22:83534939,%22params%22:{}}}';
             }
 
             let dogName = response.animals[i].name;

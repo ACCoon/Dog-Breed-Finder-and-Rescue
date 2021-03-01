@@ -85,3 +85,10 @@ img {
 #random-dog-pic > div > div, #adopt-me-cards > div {
     background-color: #d9dab0;
 }
+
+/* Responsive site Logo Header */
+h1 img {
+    margin-top: 5rem;
+    width: 35%;
+    height: auto;
+}
