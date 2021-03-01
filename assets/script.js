@@ -2,8 +2,6 @@ $('#search-button').on('click', function(event){
     event.preventDefault();
     var breedInput = $('#breed-input').val();
     var postalCodeInput = $('#postal-code-input').val();
-    console.log(breedInput);
-    console.log(postalCodeInput);
     getDogPics(breedInput);
     dogsNearMe(breedInput, postalCodeInput);
     if(!searchedBreeds.includes(breedInput)){
@@ -59,7 +57,7 @@ function dogsNearMe(breedName, postalCode){
 
         for(var i = 0; response.animals[i]; i++){
             
-            if (response.animals.length){
+            if (response.animals[i].photos.length){
                 var dogPhoto = response.animals[i].photos[0].full;               
             } else {
                 var dogPhoto = 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
@@ -70,13 +68,6 @@ function dogsNearMe(breedName, postalCode){
             let dogDesc = response.animals[i].description;
             let adoptLink = response.animals[i].url;
             
-            console.log(dogDesc);
-            console.log(dogName);
-            console.log(dogPhoto);
-            console.log(dogAge);
-            console.log(adoptLink);
-            console.log(response);
-
             let adoptDogCard = `<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
             <div class="uk-card-media-left uk-cover-container">
                 <img src="${dogPhoto}" alt="" uk-cover>
@@ -119,7 +110,6 @@ function saveToList(breedInput){
 
 // prints the search inputs to a list under the search bar
 function renderSearchHistory(){
-    console.log(searchedBreeds);
         $('#search-history').text('');
     for(var i = 0; i < searchedBreeds.length; i++){
         var dogBreedName = `<button class = "uk-button-secondary dog-button uk-button-large">${searchedBreeds[i]}</button>`;
