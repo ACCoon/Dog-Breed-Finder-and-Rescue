@@ -63,7 +63,7 @@ function dogsNearMe(breedName, postalCode){
                 var dogPhoto = response.animals[i].photos[0].full;               
             } else {
                 var dogPhoto = 'https://lakelandescaperoom.com/wp-content/uploads/2016/09/image-placeholder-500x500-300x300.jpg';
-            };
+            }
 
             let dogName = response.animals[i].name;
             let dogAge = response.animals[i].age;
