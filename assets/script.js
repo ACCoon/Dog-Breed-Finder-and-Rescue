@@ -1,3 +1,4 @@
+// Fired when the search button is clicked, will run getdogpics and dogsnearme passing in values from input fields
 $('#search-button').on('click', function(event){
     event.preventDefault();
     var breedInput = $('#breed-input').val().toLowerCase().replace(/\s/g, '');
@@ -9,7 +10,7 @@ $('#search-button').on('click', function(event){
     }
 });
 
-// write getdogpics function
+// Returns 3 random dog pics of searched breed from dog api and print them to page
 
 function getDogPics(breedName){
     fetch('https://dog.ceo/api/breed/'+ breedName +'/images/random/3')
@@ -33,11 +34,6 @@ function getDogPics(breedName){
 
 // function fetches from rescue api, grabs info and prints a card to the page for adoptable dogs
 function dogsNearMe(breedName, postalCode){ 
-    // fetch adoptable dogs with queried breed name and postal code 
-    // URL specifies dog, distance of within 50 miles of user input postal code and user input dog breed 
-    // URL will pass in breedName and postalCode passed when click event happens 
-    // extract needed information from response, should be array containing 3 dogs 
-    // picture, name, age, desc, link to adopt
     $('#adopt-me-cards').text('');
     let dogURL = 'https://petproxy.herokuapp.com/animals?type=dog&distance=50&limit=3&location=' + postalCode + '&breed='+ breedName
     fetch(dogURL)
@@ -45,9 +41,6 @@ function dogsNearMe(breedName, postalCode){
         return response.json();
     })
     .then(function(response){
-        // loop through the array of ANIMALS in the response, should always return 3 animals due to query parameters in the URL 
-        // conditional that shows user no dogs found if search isnt found
-        // console.log(response.error)
         if (postalCode === ''){
             $('#adopt-me-cards').text('Enter your postal code to find adoptable dogs near you')
         } else if (response.error == 'url error'){
