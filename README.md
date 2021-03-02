@@ -43,7 +43,7 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 ---
 No installation needed for this project
 
-See deployed site here: https://ACCoon.github.io/Dog-Breed-Finder-And-Rescue
+See deployed site here: https://ACCoon.github.io/Dog-Breed-Finder-and-Rescue
 
 See repository here: https://github.com/ACCoon/Dog-Breed-Finder-And-Rescue
 ## Contributing
